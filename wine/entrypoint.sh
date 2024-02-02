@@ -1,16 +1,15 @@
+#!/bin/bash
 cd /home/container
 
-# Set environment variable that holds the Internal Docker IP
+# Make internal Docker IP address available to processes.
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
-# print the wine version on startup
-printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mwine --version\n"
 wine --version
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
-echo -e ":/home/container$ ${MODIFIED_STARTUP}"
+echo ":/home/container$ ${MODIFIED_STARTUP}"
 
 # Run the Server
 eval ${MODIFIED_STARTUP}
