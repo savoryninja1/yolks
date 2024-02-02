@@ -16,14 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         tag:
-          - 12
-          - 14
-          - 16
-          - 17
-          - 18
-          - 19
-          - 20
-          - 21
+          - latest
     steps:
       - uses: actions/checkout@v4
       # Setup QEMU for ARM64 Build
@@ -39,8 +32,8 @@ jobs:
       - uses: docker/build-push-action@v5
         with:
           context: ./nodejs
-          file: ./nodejs/${{ matrix.tag }}/Dockerfile
+          file: ./wine/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/parkervcp/yolks:nodejs_${{ matrix.tag }}
+            ghcr.io/savoryninja1/yolks:nodejs_${{ matrix.tag }}
