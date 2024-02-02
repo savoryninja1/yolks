@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - nodejs/**
+      - wine/**
 jobs:
   push:
     name: "yolks:wine_${{ matrix.tag }}"
