@@ -12,11 +12,6 @@ jobs:
   push:
     name: "yolks:wine_${{ matrix.tag }}"
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        tag:
-          - latest
     steps:
       - uses: actions/checkout@v4
       # Setup QEMU for ARM64 Build
@@ -32,8 +27,8 @@ jobs:
       - uses: docker/build-push-action@v5
         with:
           context: ./wine
-          file: ./wine/${{ matrix.tag }}/Dockerfile
+          file: ./wine/latest/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/savoryninja1/yolks:wine_${{ matrix.tag }}
+            ghcr.io/savoryninja1/yolks:wine_latest
