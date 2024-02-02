@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: build
-      run: docker build ../../wine/latest/. --file savoryninja1/wine:latest
+      run: docker build ./wine/latest/. --file savoryninja1/wine:latest
