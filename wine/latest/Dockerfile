@@ -1,11 +1,25 @@
-FROM        ghcr.io/parkervcp/yolks:debian
+FROM amd64/debian:buster-slim as builder
 
 LABEL       author="minecord" maintainer="us.minecord@gmail.com"
 
-RUN             dpkg --add-architecture i386 \
-                && apt update -y \
-                && apt install -y --no-install-recommends gnupg2 numactl tzdata software-properties-common libntlm0 winbind xvfb xauth python3 libncurses5:i386 libncurses6:i386 libsdl2-2.0-0 libsdl2-2.0-0:i386
-
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    ca-certificates \
+    cmake \
+    make \
+    tar \
+    libssl-dev \
+    libsasl2-dev \
+    pkg-config \
+    libsystemd-dev \
+    zlib1g-dev \
+    libpq-dev \
+    postgresql-server-dev-all \
+    flex \
+    bison \
+    
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
