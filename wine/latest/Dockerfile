@@ -1,4 +1,4 @@
-FROM        --platform=arm64v8/ubuntu node:20-bullseye-slim
+FROM        --platform=arm64v8/ubuntu
 
 LABEL       author="minecord" maintainer="us.minecord@gmail.com"
 
