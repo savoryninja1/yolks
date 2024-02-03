@@ -6,6 +6,12 @@ RUN         apt update -y \
             && apt -y install ffmpeg iproute2 git sqlite3 libsqlite3-dev python3 python3-dev ca-certificates dnsutils tzdata zip tar curl build-essential libtool iputils-ping libnss3 tini \
             && useradd -m -d /home/container container
 
+RUN dpkg --add-architecture i386 
+RUN mkdir -pm755 /etc/apt/keyrings
+RUN wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+RUN apt update && sudo apt install --install-recommends winehq-stable
+
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
