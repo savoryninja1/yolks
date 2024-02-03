@@ -2,8 +2,9 @@ FROM        ghcr.io/parkervcp/yolks:debian
 
 LABEL       author="minecord" maintainer="us.minecord@gmail.com"
 
-RUN         apt update -y \
-            && apt -y install ffmpeg wget openssl iproute2 git sqlite3 libsqlite3-dev python3 python3-dev ca-certificates dnsutils tzdata zip tar curl build-essential libtool iputils-ping libnss3 tini \
+RUN         dpkg --add-architecture i386 \
+            && apt update -y \
+            && apt install -y --no-install-recommends gnupg2 wget numactl tzdata software-properties-common libntlm0 winbind xvfb xauth python3 libncurses5:i386 libncurses6:i386 libsdl2-2.0-0 libsdl2-2.0-0:i386 \
             && useradd -m -d /home/container container
 
 USER        container
