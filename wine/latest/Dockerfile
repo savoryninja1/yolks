@@ -1,4 +1,4 @@
-FROM        --platform=arm64v8/ubuntu
+FROM        --platform=arm64v8/ubuntu httpd
 
 LABEL       author="minecord" maintainer="us.minecord@gmail.com"
 
