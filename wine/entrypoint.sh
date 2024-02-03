@@ -8,9 +8,10 @@ export INTERNAL_IP
 
 export DOTNET_ROOT=/usr/share/
 
-# print the dotnet version on startup
-printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mwine --version\n"
-wine --version
+# print the wine version on startup
+#printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mwine --version\n"
+#wine --version
+chmod 770 TerrariaServer.bin.x86_64
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
