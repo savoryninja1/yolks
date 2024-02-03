@@ -1,4 +1,4 @@
-name: build nodejs
+name: build wine
 on:
   workflow_dispatch:
   schedule:
