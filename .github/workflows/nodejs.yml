@@ -10,7 +10,7 @@ on:
       - nodejs/**
 jobs:
   push:
-    name: "yolks:nodejs_${{ matrix.tag }}"
+    name: "yolks:wine_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
