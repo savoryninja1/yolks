@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH node:20-bullseye-slim
+FROM        --platform=linux_x86_64 node:20-bullseye-slim
 
 LABEL       author="minecord" maintainer="us.minecord@gmail.com"
 
