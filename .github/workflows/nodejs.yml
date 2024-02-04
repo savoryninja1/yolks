@@ -1,4 +1,4 @@
-name: build wine
+name: build terraria
 on:
   workflow_dispatch:
   schedule:
@@ -10,7 +10,7 @@ on:
       - nodejs/**
 jobs:
   push:
-    name: "yolks:wine_${{ matrix.tag }}"
+    name: "yolks:terraria_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -29,9 +29,9 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       - uses: docker/build-push-action@v5
         with:
-          context: ./wine
-          file: ./wine/${{ matrix.tag }}/Dockerfile
+          context: ./terraria
+          file: ./terraria/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64, linux/arm64
           push: true
           tags: |
-            ghcr.io/savoryninja1/yolks:wine_${{ matrix.tag }}
+            ghcr.io/savoryninja1/yolks:terraria_${{ matrix.tag }}
