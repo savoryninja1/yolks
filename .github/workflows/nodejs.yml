@@ -19,8 +19,6 @@ jobs:
           - latest
     steps:
       - uses: actions/checkout@v4
-      # Setup QEMU for ARM64 Build
-      - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
         with:
           buildkitd-flags: --debug
@@ -33,7 +31,7 @@ jobs:
         with:
           context: ./wine
           file: ./wine/${{ matrix.tag }}/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: |
             ghcr.io/savoryninja1/yolks:wine_${{ matrix.tag }}
