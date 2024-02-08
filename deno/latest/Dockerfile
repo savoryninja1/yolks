@@ -1,7 +1,7 @@
 ARG DENO_VERSION=1.40.3
 
 FROM denoland/deno:bin-$DENO_VERSION AS deno
-FROM ubuntu
+FROM $TARGETOS/$TARGETARCH
 COPY --from=deno /deno /usr/local/bin/deno
 
 RUN         apt update \
