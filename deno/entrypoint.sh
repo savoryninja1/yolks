@@ -8,6 +8,8 @@ export INTERNAL_IP
 
 export DOTNET_ROOT=/usr/share/
 
+deno --version
+
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
 echo -e ":/home/container$ ${MODIFIED_STARTUP}"
