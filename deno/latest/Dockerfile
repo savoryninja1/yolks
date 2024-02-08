@@ -1,4 +1,8 @@
-FROM --platform=$TARGETOS/$TARGETARCH denoland/deno:bin-1.40.3
+ARG DENO_VERSION=1.40.3
+
+FROM denoland/deno:bin-$DENO_VERSION AS deno
+FROM ubuntu
+COPY --from=deno /deno /usr/local/bin/deno
 
 RUN         apt update \
             && apt -y install wget iproute2 git tzdata zip tar curl \
