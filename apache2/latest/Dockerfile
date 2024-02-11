@@ -1,7 +1,7 @@
 FROM --platform=$TARGETOS/$TARGETARCH httpd:latest
 
 RUN         apt update \
-            && apt -y install wget git zip tar curl \
+            && apt -y install wget iproute2 git tzdata zip tar curl \
             && useradd -m -d /home/container container
 
     
