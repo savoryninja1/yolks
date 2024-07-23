@@ -1,4 +1,5 @@
 FROM --platform=$TARGETOS/$TARGETARCH python:3.12-slim-bookworm as builder
+RUN apt -y install yarn
 WORKDIR /app
 RUN yarn build
 FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:21-jdk-jammy
