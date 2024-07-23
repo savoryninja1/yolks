@@ -1,11 +1,6 @@
 FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:21-jdk-jammy as java
-ADD . /src
-WORKDIR /src
-RUN go test --cover -v ./...
-RUN go build -v -o demo
 FROM --platform=$TARGETOS/$TARGETARCH python:3.12-slim-bookworm
-COPY --from=java /src/demo/ /usr/local/bin/demo
-RUN chmod +x /usr/local/bin/demo
+COPY --from=java . .
 
 RUN         apt update \
             && apt -y install ffmpeg wget iproute2 git sqlite3 libsqlite3-dev python3 python3-dev ca-certificates dnsutils tzdata zip tar curl build-essential libtool iputils-ping libnss3 tini \
