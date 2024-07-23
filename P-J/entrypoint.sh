@@ -8,8 +8,8 @@ export INTERNAL_IP
 
 export DOTNET_ROOT=/usr/share/
 
-python -version
-java --version
+python -V
+java -version
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
