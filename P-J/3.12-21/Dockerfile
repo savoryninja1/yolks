@@ -1,7 +1,7 @@
-FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:21-jdk-jammy as builder
+FROM --platform=$TARGETOS/$TARGETARCH python:3.12-slim-bookworm as builder
 WORKDIR /app
 RUN yarn build
-FROM --platform=$TARGETOS/$TARGETARCH python:3.12-slim-bookworm
+FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:21-jdk-jammy
 COPY --from=builder /app/build /usr/lib/java
 
 
